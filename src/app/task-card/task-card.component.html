@@ -1,0 +1,22 @@
+<div class="task-card" [class.dragging]="false">
+  <!-- Task Header -->
+  <div class="task-header">
+    <h3 class="task-name" title="Drag to move task">{{ task.name }}</h3>
+    <span class="task-level" [ngClass]="getLevelClass()">{{ task.level }}</span>
+  </div>
+
+  <!-- Task Description -->
+  <p class="task-description" *ngIf="task.description">
+    {{ task.description }}
+  </p>
+
+  <!-- Task Actions -->
+  <div class="task-actions">
+    <button class="task-btn" (click)="onEdit()" title="Edit task">
+      <span>✎</span> Edit
+    </button>
+    <button class="task-btn task-btn-delete" (click)="onDelete()" title="Delete task">
+      <span>🗑</span> Delete
+    </button>
+  </div>
+</div>

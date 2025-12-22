@@ -1,0 +1,97 @@
+<!-- Modal Overlay -->
+<div class="modal-overlay" (click)="onBackdropClick($event)">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2 class="modal-title">
+        {{ initialData ? 'Edit' : 'Add' }} 
+        {{ type === 'column' ? 'Column' : 'Task' }}
+      </h2>
+      <button class="modal-close" (click)="onCancel()" type="button">×</button>
+    </div>
+
+    <!-- Modal Body -->
+    <form (ngSubmit)="onSubmit()" class="modal-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label class="form-label" for="name">
+          {{ type === 'column' ? 'Column' : 'Task' }} Name
+          <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          class="form-input"
+          [(ngModel)]="formData.name"
+          name="name"
+          [placeholder]="type === 'column' ? 'Enter column name' : 'Enter task name'"
+          required
+          autofocus
+        />
+      </div>
+
+      <!-- Task-specific fields -->
+      <div *ngIf="type === 'task'">
+        <!-- Description Field -->
+        <div class="form-group">
+          <label class="form-label" for="description">Description</label>
+          <textarea
+            id="description"
+            class="form-textarea"
+            [(ngModel)]="formData.description"
+            name="description"
+            placeholder="Enter task description (optional)"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Level Field -->
+        <div class="form-group">
+          <label class="form-label" for="level">
+            Level
+            <span class="required">*</span>
+          </label>
+          <div class="level-selector">
+            <label class="level-option" [class.active]="formData.level === 'Easy'">
+              <input
+                type="radio"
+                name="level"
+                value="Easy"
+                [(ngModel)]="formData.level"
+              />
+              <span class="level-badge level-easy">Easy</span>
+            </label>
+            <label class="level-option" [class.active]="formData.level === 'Medium'">
+              <input
+                type="radio"
+                name="level"
+                value="Medium"
+                [(ngModel)]="formData.level"
+              />
+              <span class="level-badge level-medium">Medium</span>
+            </label>
+            <label class="level-option" [class.active]="formData.level === 'Hard'">
+              <input
+                type="radio"
+                name="level"
+                value="Hard"
+                [(ngModel)]="formData.level"
+              />
+              <span class="level-badge level-hard">Hard</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formData.name.trim()">
+          {{ initialData ? 'Update' : 'Create' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

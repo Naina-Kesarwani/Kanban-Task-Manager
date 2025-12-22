@@ -1,0 +1,21 @@
+<div class="dashboard-container">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <h1>📋 Kanban Task Manager</h1>
+      <div class="user-section">
+        <span class="user-email">{{ userEmail }}</span>
+        <button class="btn-logout" (click)="onLogout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="dashboard-content">
+    <!-- Notification Component -->
+    <app-notification></app-notification>
+    
+    <!-- Task Board Component -->
+    <app-task-board></app-task-board>
+  </div>
+</div>

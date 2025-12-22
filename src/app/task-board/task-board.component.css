@@ -1,0 +1,119 @@
+/* Task Board - Minimalist Layout */
+.task-board {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: hsl(var(--background));
+}
+
+/* Header - Clean & Minimal */
+.board-header {
+  background: hsl(var(--surface));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: var(--space-6) var(--space-8);
+  box-shadow: var(--shadow-xs);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.title-section h1 {
+  color: hsl(var(--primary-dark));
+  margin-bottom: var(--space-2);
+}
+
+.subtitle {
+  color: hsl(var(--text-secondary));
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+/* Button - Minimalist Purple */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: hsl(var(--primary));
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: hsl(var(--primary-dark));
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Board Container */
+.board-container {
+  flex: 1;
+  padding: var(--space-8);
+  overflow: hidden;
+}
+
+.board-scroll {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--space-4);
+}
+
+.columns-wrapper {
+  display: flex;
+  gap: var(--space-6);
+  min-height: calc(100vh - 200px);
+  padding: var(--space-2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .board-header {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .board-container {
+    padding: var(--space-4);
+  }
+
+  .columns-wrapper {
+    gap: var(--space-4);
+  }
+
+  .title-section h1 {
+    font-size: 1.5rem;
+  }
+}

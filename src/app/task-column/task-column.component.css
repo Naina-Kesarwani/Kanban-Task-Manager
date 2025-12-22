@@ -1,0 +1,125 @@
+/* Column - Clean Minimalist Card */
+.column {
+  background: hsl(var(--surface));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  min-width: 320px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+  height: fit-content;
+  max-height: calc(100vh - 240px);
+}
+
+.column:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Column Header */
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.column-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+  margin: 0;
+  flex: 1;
+  cursor: grab;
+  user-select: none;
+}
+
+.column-title:active {
+  cursor: grabbing;
+}
+
+.column-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Icon Buttons - Minimal */
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: hsl(var(--background));
+  color: hsl(var(--text-secondary));
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: all var(--transition);
+  border: 1px solid hsl(var(--border));
+}
+
+.btn-icon:hover {
+  background: hsl(var(--primary));
+  color: white;
+  border-color: hsl(var(--primary));
+  transform: scale(1.05);
+}
+
+.btn-icon.btn-danger:hover {
+  background: hsl(var(--level-hard));
+  border-color: hsl(var(--level-hard));
+}
+
+/* Task Count */
+.task-count {
+  padding: var(--space-3) var(--space-5);
+  font-size: 0.8125rem;
+  color: hsl(var(--text-muted));
+  font-weight: 500;
+  background: hsl(var(--background) / 0.5);
+}
+
+/* Tasks Container */
+.tasks-container {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 200px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-10) var(--space-4);
+  color: hsl(var(--text-muted));
+}
+
+.empty-state p {
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-2);
+}
+
+.empty-state small {
+  color: hsl(var(--text-muted));
+}
+
+/* Drag States */
+.column.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .column {
+    min-width: 280px;
+    max-width: 300px;
+  }
+}

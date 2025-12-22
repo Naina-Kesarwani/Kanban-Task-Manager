@@ -1,0 +1,47 @@
+<div class="task-board">
+  <!-- Header -->
+  <header class="board-header">
+    <div class="header-content">
+      <div class="title-section">
+        <h1>Kanban Task Manager</h1>
+        <p class="subtitle">Drag and drop tasks between columns (only by name)</p>
+      </div>
+      <button class="btn btn-primary" (click)="showColumnForm = true">
+        <span class="btn-icon">+</span>
+        Add Column
+      </button>
+    </div>
+  </header>
+
+  <!-- Column Form Modal -->
+  <app-task-form
+    *ngIf="showColumnForm"
+    [type]="'column'"
+    (formSubmit)="addColumn($event.name)"
+    (formCancel)="showColumnForm = false">
+  </app-task-form>
+
+  <!-- Board Columns -->
+  <div class="board-container">
+    <div class="board-scroll">
+      <div class="columns-wrapper">
+        <app-task-column
+          *ngFor="let column of columns"
+          [column]="column"
+          [draggable]="true"
+          (dragstart)="onColumnDragStart(column.id, $event)"
+          (dragend)="onColumnDragEnd($event)"
+          (dragover)="onColumnDragOver($event)"
+          (drop)="onColumnDrop(column.id, $event)"
+          (addTask)="addTask(column.id, $event)"
+          (updateTask)="updateTask(column.id, $event)"
+          (deleteTask)="deleteTask(column.id, $event)"
+          (deleteColumn)="deleteColumn(column.id)"
+          (taskDragStart)="onTaskDragStart(column.id, $event.taskId, $event.event)"
+          (taskDragEnd)="onTaskDragEnd($event)"
+          (taskDrop)="onTaskDrop(column.id, $event)">
+        </app-task-column>
+      </div>
+    </div>
+  </div>
+</div>

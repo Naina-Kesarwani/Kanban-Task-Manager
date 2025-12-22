@@ -1,0 +1,160 @@
+/* Global Styles - Purple Minimalist Professional Theme */
+
+:root {
+  /* Purple Color Palette - Minimalist & Professional */
+  --primary: 263 70% 60%;        /* Soft Purple */
+  --primary-dark: 263 70% 50%;   /* Darker Purple */
+  --primary-light: 263 55% 85%;  /* Light Purple */
+  --accent: 280 60% 65%;         /* Lavender */
+  
+  /* Neutrals - Clean & Minimal */
+  --background: 240 20% 98%;     /* Off White */
+  --surface: 0 0% 100%;          /* Pure White */
+  --surface-hover: 240 20% 96%;  /* Subtle Gray */
+  --border: 240 15% 90%;         /* Light Border */
+  --text-primary: 240 15% 20%;   /* Dark Gray */
+  --text-secondary: 240 10% 50%; /* Medium Gray */
+  --text-muted: 240 10% 70%;     /* Light Gray */
+  
+  /* Task Levels with Purple Tints */
+  --level-easy: 150 65% 55%;     /* Soft Green */
+  --level-medium: 45 85% 60%;    /* Soft Amber */
+  --level-hard: 5 75% 62%;       /* Soft Red */
+  
+  /* Shadows - Subtle & Elegant */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  
+  /* Transitions */
+  --transition: 0.15s ease-in-out;
+  --transition-slow: 0.25s ease-in-out;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: hsl(var(--background));
+  color: hsl(var(--text-primary));
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--text-muted));
+}
+
+/* Typography - Clean & Minimal */
+h1 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+small {
+  font-size: 0.8125rem;
+}
+
+/* Button Reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Input Reset */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Drag States - Minimal & Clean */
+[draggable="true"] {
+  cursor: grab;
+  user-select: none;
+}
+
+[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.drag-over {
+  background: hsl(var(--primary) / 0.05);
+  border-color: hsl(var(--primary));
+}

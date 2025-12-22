@@ -1,0 +1,47 @@
+<div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+  <!-- Column Header -->
+  <div class="column-header">
+    <h2 class="column-title" title="Drag to reorder column">{{ column.name }}</h2>
+    <div class="column-actions">
+      <button class="btn-icon" (click)="showTaskForm = true" title="Add task">
+        <span>+</span>
+      </button>
+      <button class="btn-icon btn-danger" (click)="onDeleteColumn()" title="Delete column">
+        <span>×</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Task Count -->
+  <div class="task-count">
+    {{ column.tasks.length }} {{ column.tasks.length === 1 ? 'task' : 'tasks' }}
+  </div>
+
+  <!-- Task Form Modal -->
+  <app-task-form
+    *ngIf="showTaskForm"
+    [type]="'task'"
+    [initialData]="editingTask"
+    (formSubmit)="editingTask ? onUpdateTask($event) : onAddTask($event)"
+    (formCancel)="cancelForm()">
+  </app-task-form>
+
+  <!-- Tasks List -->
+  <div class="tasks-container">
+    <app-task-card
+      *ngFor="let task of column.tasks"
+      [task]="task"
+      [draggable]="true"
+      (dragstart)="onTaskDragStart(task.id, $event)"
+      (dragend)="onTaskDragEnd($event)"
+      (edit)="onEditTask(task)"
+      (delete)="onDeleteTask(task.id)">
+    </app-task-card>
+
+    <!-- Empty State -->
+    <div *ngIf="column.tasks.length === 0" class="empty-state">
+      <p>No tasks yet</p>
+      <small>Click + to add a task</small>
+    </div>
+  </div>
+</div>

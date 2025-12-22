@@ -1,0 +1,282 @@
+/* Modal Overlay - Minimalist */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content - Clean Card */
+.modal-content {
+  background: hsl(var(--surface));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6);
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+  margin: 0;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: hsl(var(--text-secondary));
+  font-size: 1.75rem;
+  line-height: 1;
+  transition: all var(--transition);
+}
+
+.modal-close:hover {
+  background: hsl(var(--background));
+  color: hsl(var(--text-primary));
+}
+
+/* Modal Form */
+.modal-form {
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+  margin-bottom: var(--space-2);
+}
+
+.required {
+  color: hsl(var(--level-hard));
+  margin-left: var(--space-1);
+}
+
+/* Form Inputs - Minimalist */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: hsl(var(--text-primary));
+  background: hsl(var(--surface));
+  transition: all var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: hsl(var(--text-muted));
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Level Selector - Minimalist Pills */
+.level-selector {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.level-option {
+  cursor: pointer;
+  position: relative;
+}
+
+.level-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.level-badge {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.level-easy {
+  background: hsl(var(--level-easy) / 0.1);
+  color: hsl(var(--level-easy));
+}
+
+.level-medium {
+  background: hsl(var(--level-medium) / 0.1);
+  color: hsl(var(--level-medium));
+}
+
+.level-hard {
+  background: hsl(var(--level-hard) / 0.1);
+  color: hsl(var(--level-hard));
+}
+
+.level-option.active .level-easy {
+  background: hsl(var(--level-easy) / 0.2);
+  border-color: hsl(var(--level-easy));
+}
+
+.level-option.active .level-medium {
+  background: hsl(var(--level-medium) / 0.2);
+  border-color: hsl(var(--level-medium));
+}
+
+.level-option.active .level-hard {
+  background: hsl(var(--level-hard) / 0.2);
+  border-color: hsl(var(--level-hard));
+}
+
+.level-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid hsl(var(--border));
+}
+
+/* Buttons - Minimalist */
+.btn {
+  flex: 1;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: hsl(var(--primary));
+  color: white;
+  border: 1px solid hsl(var(--primary));
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: hsl(var(--primary-dark));
+  border-color: hsl(var(--primary-dark));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: hsl(var(--surface));
+  color: hsl(var(--text-secondary));
+  border: 1px solid hsl(var(--border));
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--background));
+  color: hsl(var(--text-primary));
+  border-color: hsl(var(--text-muted));
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-content {
+    max-width: 100%;
+    margin: var(--space-4);
+  }
+
+  .modal-header,
+  .modal-form {
+    padding: var(--space-4);
+  }
+
+  .level-selector {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
