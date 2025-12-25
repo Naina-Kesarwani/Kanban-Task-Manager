@@ -1,6 +1,7 @@
 {
   "name": "kanban",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,14 +21,15 @@
       }
     ]
   },
-  "private": true,
   "dependencies": {
+    "@angular/animations": "^20.3.0",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
     "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
+    "@angular/platform-browser-dynamic": "^20.3.0",
     "@angular/router": "^20.3.0",
     "firebase": "^12.5.0",
     "rxjs": "~7.8.0",
