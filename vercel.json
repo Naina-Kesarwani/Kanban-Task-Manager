@@ -1,7 +1,8 @@
+
 {
   "framework": "other",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/Kanban/browser",
+  "outputDirectory": "dist/Kanban",
   "rewrites": [
     {
       "source": "/(.*)",
