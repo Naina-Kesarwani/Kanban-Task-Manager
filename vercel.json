@@ -1,8 +1,7 @@
-
 {
-  "framework": "angular",
+  "framework": "other",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/Kanban",
+  "outputDirectory": "dist/Kanban/browser",
   "rewrites": [
     {
       "source": "/(.*)",
