@@ -1,0 +1,120 @@
+<div class="kanban-board-container">
+  <!-- Success Notification -->
+  <div *ngIf="showSuccessNotification" 
+       class="success-notification"
+       [ngClass]="{
+         'notification-high': notificationType === 'high',
+         'notification-medium': notificationType === 'medium',
+         'notification-low': notificationType === 'low',
+         'notification-success': notificationType === 'success',
+         'fade-out': notificationFadeOut
+       }">
+    {{ notificationMessage }}
+  </div>
+
+  <!-- Main Title Header with Search Bar -->
+  <div class="main-header">
+    <div class="header-content">
+      <div class="title-section">
+        <h1>KanbanTaskManager</h1>
+        <p class="subtitle">Drag and drop tasks between columns to manage your workflow</p>
+      </div>
+      
+      <!-- Expandable Search Bar -->
+      <div class="search-bar" [class.expanded]="searchExpanded">
+        <button class="search-icon-btn" (click)="toggleSearch()">
+          <span class="search-icon">🔍</span>
+        </button>
+        <input 
+          type="text" 
+          class="search-input"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="onSearchChange()"
+          (blur)="onSearchBlur()"
+          placeholder="Search tasks..."
+          #searchInput
+        />
+        <button 
+          *ngIf="searchQuery" 
+          class="clear-btn"
+          (click)="clearSearch()"
+          title="Clear search">
+          ✕
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Button and Column Counter -->
+  <div class="kanban-header">
+    <button class="logout-btn" (click)="onLogout()">
+      <span class="logout-icon">🚪</span>
+      <span class="logout-text">Logout</span>
+    </button>
+    <div class="column-info">
+      <span class="column-counter">{{ columns.length }} Column{{ columns.length !== 1 ? 's' : '' }}</span>
+    </div>
+    <button class="btn-add-column" (click)="onAddColumn()">
+      ➕ Add Column
+    </button>
+  </div>
+
+  <!-- Kanban Board - Scrollable Area with Equal Height Columns -->
+  <div class="kanban-board" 
+       cdkDropList 
+       cdkDropListOrientation="horizontal"
+       [cdkDropListData]="columns"
+       (cdkDropListDropped)="onDropColumn($event)">
+    <app-kanban-column 
+      *ngFor="let column of columns"
+      [column]="column"
+      [connectedDropLists]="connectedDropLists"
+      cdkDrag
+      [cdkDragData]="column"
+      (addTask)="onAddTask($event)"
+      (editTask)="onEditTask($event)"
+      (deleteTask)="onDeleteTask($event)"
+      (updateTask)="onUpdateTask($event)"
+      (updateColumnTitle)="onUpdateColumnTitle($event)"
+      (deleteColumn)="onDeleteColumn($event)"
+      (drop)="onDrop($event)">
+    </app-kanban-column>
+  </div>
+
+  <!-- Task Modal -->
+  <app-task-modal
+    [showModal]="showModal"
+    [isEditing]="isEditing"
+    [task]="currentTask"
+    (close)="onCloseModal()"
+    (save)="onSaveTask($event)">
+  </app-task-modal>
+
+  <!-- Column Modal -->
+  <div class="modal-overlay" *ngIf="showColumnModal" (click)="onCancelColumnModal()">
+    <div class="column-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Add New Column</h2>
+        <button class="close-btn" (click)="onCancelColumnModal()">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <label for="columnTitle">Column Title</label>
+        <input 
+          type="text" 
+          id="columnTitle"
+          [(ngModel)]="newColumnTitle"
+          placeholder="Enter column title..."
+          (keyup.enter)="onSaveColumn()"
+          autofocus>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn-cancel" (click)="onCancelColumnModal()">Cancel</button>
+        <button class="btn-save" (click)="onSaveColumn()" [disabled]="!newColumnTitle.trim()">
+          Add Column
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

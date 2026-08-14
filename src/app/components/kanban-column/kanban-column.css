@@ -1,0 +1,325 @@
+/* src/app/components/kanban-column/kanban-column.css */
+.column {
+  background: linear-gradient(135deg, #18181B 0%, #27272A 100%);
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 380px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  /* CHANGED: Use 100% height to match parent container for equal column heights */
+  height: 100%;
+}
+
+.column:hover {
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.3);
+  border-color: rgba(225, 29, 72, 0.2);
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(225, 29, 72, 0.3);
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Editable Column Title Styles */
+.column-title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.column-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F4F4F5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.column-title:hover {
+  background: rgba(225, 29, 72, 0.1);
+  color: #FB7185;
+}
+
+.column-title-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #E11D48;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F4F4F5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: none;
+  min-width: 0;
+}
+
+.column-title-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.3);
+}
+
+.edit-title-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.column-title-container:hover .edit-title-btn {
+  opacity: 1;
+}
+
+.column-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-count {
+  background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 32px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.4);
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon {
+  min-width: 36px;
+  min-height: 36px;
+  font-size: 16px;
+}
+
+.btn-icon:hover {
+  background: rgba(225, 29, 72, 0.2);
+  border-color: #E11D48;
+  transform: scale(1.1);
+}
+
+.btn-delete-column:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #EF4444;
+}
+
+.plus-icon {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E11D48;
+}
+
+.delete-icon {
+  font-size: 18px;
+}
+
+.task-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  padding-right: 4px;
+  min-height: 0;
+}
+
+.task-container {
+  min-height: 100px;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.task-container.cdk-drop-list-dragging {
+  background: rgba(225, 29, 72, 0.05);
+}
+
+.task-placeholder {
+  background: rgba(225, 29, 72, 0.2);
+  border: 2px dashed #E11D48;
+  border-radius: 10px;
+  min-height: 100px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar Styles */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: rgba(225, 29, 72, 0.5);
+  border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(225, 29, 72, 0.7);
+}
+
+.add-task-button {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(225, 29, 72, 0.1);
+  border: 2px dashed rgba(225, 29, 72, 0.3);
+  border-radius: 8px;
+  color: #E11D48;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.add-task-button:hover {
+  background: rgba(225, 29, 72, 0.2);
+  border-color: #E11D48;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(225, 29, 72, 0.3);
+}
+
+.add-task-button:active {
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 1024px) {
+  .column {
+    min-width: 280px;
+    max-width: 340px;
+    /* Keep 100% height for equal columns */
+    height: 100%;
+  }
+  
+  .column-title {
+    font-size: 1rem;
+  }
+  
+  .column-title-input {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .column {
+    min-width: 260px;
+    max-width: 320px;
+    padding: 14px;
+    /* Keep 100% height for equal columns */
+    height: 100%;
+  }
+  
+  .column-header {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+  
+  .column-title {
+    font-size: 0.95rem;
+  }
+  
+  .column-title-input {
+    font-size: 0.95rem;
+  }
+  
+  .edit-title-btn {
+    opacity: 1;
+  }
+  
+  .btn-icon {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 18px;
+  }
+  
+  .add-task-button {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .column {
+    min-width: 100%;
+    max-width: 100%;
+    /* Keep 100% height for equal columns */
+    height: 100%;
+  }
+  
+  .column-title {
+    font-size: 0.9rem;
+  }
+  
+  .column-title-input {
+    font-size: 0.9rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .edit-title-btn {
+    opacity: 1;
+  }
+  
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .task-list {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column,
+  .btn,
+  .column-title,
+  .add-task-button,
+  .task-container {
+    transition: none;
+  }
+}

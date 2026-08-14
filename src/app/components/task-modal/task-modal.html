@@ -1,0 +1,69 @@
+<!-- src/app/components/task-modal/task-modal.html -->
+<div class="modal-overlay" *ngIf="showModal" (click)="onOverlayClick()">
+  <div class="modal" (click)="onModalClick($event)">
+    <div class="modal-header">
+      <h2>{{ isEditing ? 'Edit Task' : 'Add New Task' }}</h2>
+      <button class="close-btn" (click)="onClose()">×</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="title">Title *</label>
+        <input 
+          type="text" 
+          id="title" 
+          [(ngModel)]="currentTask.title" 
+          placeholder="Enter task title"
+          class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea 
+          id="description" 
+          [(ngModel)]="currentTask.description" 
+          placeholder="Enter task description"
+          class="form-textarea" 
+          rows="4">
+        </textarea>
+      </div>
+
+      <!-- Date Fields Row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input 
+            type="datetime-local" 
+            id="startDate" 
+            [(ngModel)]="currentTask.startDate" 
+            class="form-input date-input">
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input 
+            type="datetime-local" 
+            id="endDate" 
+            [(ngModel)]="currentTask.endDate" 
+            class="form-input date-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" [(ngModel)]="currentTask.priority" class="form-select">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="onClose()">Cancel</button>
+      <button class="btn btn-primary" (click)="onSave()">
+        {{ isEditing ? 'Update Task' : 'Add Task' }}
+      </button>
+    </div>
+  </div>
+</div>

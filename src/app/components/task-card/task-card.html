@@ -1,0 +1,43 @@
+<!-- src/app/components/task-card/task-card.html -->
+<div class="task-card">
+  <div class="task-header">
+    <h4>{{ task.title }}</h4>
+    <div class="task-actions">
+      <button class="btn-icon edit-btn" (click)="onEdit()" title="Edit Task">
+        ✏️
+      </button>
+      <button class="btn-icon delete-btn" (click)="onDelete()" title="Delete Task">
+        ❌
+      </button>
+    </div>
+  </div>
+
+  <p class="task-description" *ngIf="task.description">{{ task.description }}</p>
+
+  <!-- Combined Meta and Timer Row -->
+  <div class="task-meta-timer-row">
+    <div class="task-meta-compact">
+      <span class="meta-item" title="Created">📅 {{ formatDateCompact(task.createdAt) }}</span>
+      <span class="meta-item" title="Updated">🔄 {{ formatDateCompact(task.updatedAt) }}</span>
+    </div>
+    
+    <div class="timer-compact">
+      <span class="timer-value">⏳ {{ formatTime(currentTimeSpent) }}</span>
+      <button 
+        class="timer-btn-compact" 
+        [class.running]="task.isTimerRunning"
+        (click)="toggleTimer()"
+        title="{{ task.isTimerRunning ? 'Stop Timer' : 'Start Timer' }}">
+        {{ task.isTimerRunning ? '⏸️' : '▶️' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer with Priority and Due Date -->
+  <div class="task-footer">
+    <span class="priority-badge" [ngClass]="getPriorityClass(task.priority)">
+      {{ task.priority }}
+    </span>
+    <span class="task-date" *ngIf="task.dueDate">Due: {{ task.dueDate }}</span>
+  </div>
+</div>

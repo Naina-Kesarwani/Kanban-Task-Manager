@@ -1,0 +1,39 @@
+<div class="logout-container">
+  <div class="logout-card">
+    <!-- Icon Section -->
+    <div class="logout-icon-wrapper">
+      <div class="logout-icon">🚪</div>
+    </div>
+
+    <!-- Title Section -->
+    <h1 class="logout-title">Confirm Logout</h1>
+    <p class="logout-message">Are you sure you want to logout?</p>
+    
+    <!-- User Info -->
+    <div class="user-info-box">
+      <span class="user-icon">👤</span>
+      <span class="user-email">{{ userEmail }}</span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button 
+        class="btn btn-cancel" 
+        (click)="onCancel()"
+        [disabled]="isLoggingOut">
+        ❌ Cancel
+      </button>
+      <button 
+        class="btn btn-logout" 
+        (click)="onConfirmLogout()"
+        [disabled]="isLoggingOut">
+        <span *ngIf="!isLoggingOut">✓ Logout</span>
+        <span *ngIf="isLoggingOut" class="loading-spinner">⏳ Logging out...</span>
+      </button>
+    </div>
+
+    <p class="logout-note">
+      You can always sign back in anytime!
+    </p>
+  </div>
+</div>

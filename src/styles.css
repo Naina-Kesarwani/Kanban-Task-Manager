@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #121212 !important;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #2A2A2A 100%) !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  margin: 0;
+  padding: 0;
+  color: #F4F4F5;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  position: relative;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+  background: transparent !important;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Global color variables for consistency */
+:root {
+  --primary-color: #E11D48;
+  --accent-color: #FB7185;
+  --background-color: #121212;
+  --text-color: #F4F4F5;
+  --card-color: #1E1E1E;
+  --muted-text: #A1A1AA;
+}
+
+/* Card styling */
+.task-card,
+.card {
+  background-color: var(--card-color);
+  color: var(--text-color);
+}
+
+/* Buttons and primary elements */
+button,
+.btn-primary,
+.add-column-btn {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+button:hover,
+.btn-primary:hover,
+.add-column-btn:hover {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
+}
+
+/* Accent elements */
+.badge,
+.priority-high,
+.accent {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Column headers and highlights */
+.column-header,
+.highlight {
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+
+/* Links and interactive elements */
+a {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Input fields */
+input,
+textarea,
+select {
+  background-color: var(--card-color);
+  border: 2px solid rgba(161, 161, 170, 0.3);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.2);
+}
+
+/* Hover effects for cards */
+.task-card:hover,
+.card:hover {
+  background-color: #2A2A2A;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.3);
+  transition: all 0.3s ease;
+}

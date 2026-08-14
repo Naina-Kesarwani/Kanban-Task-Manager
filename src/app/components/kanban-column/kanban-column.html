@@ -1,0 +1,72 @@
+<!-- src/app/components/kanban-column/kanban-column.html -->
+<div class="column">
+  <div class="column-header">
+    <!-- Editable Column Title -->
+    <div class="column-title-container">
+      <h3 
+        *ngIf="!isEditingTitle"
+        (dblclick)="startEditTitle()"
+        class="column-title"
+        title="Double-click to edit">
+        {{ column.title }}
+      </h3>
+      <input 
+        *ngIf="isEditingTitle"
+        #titleInput
+        type="text"
+        [(ngModel)]="editedTitle"
+        (blur)="saveTitle()"
+        (keydown.enter)="saveTitle()"
+        (keydown.escape)="cancelEditTitle()"
+        class="column-title-input"
+        maxlength="50"
+      />
+      <button 
+        *ngIf="!isEditingTitle"
+        class="btn btn-icon edit-title-btn" 
+        (click)="startEditTitle()" 
+        title="Edit Column Name">
+        ✏️
+      </button>
+    </div>
+    
+    <div class="column-controls">
+      <span class="task-count">{{ column.tasks.length }}</span>
+      <button class="btn btn-icon" (click)="onAddTask()" title="Add Task">
+        <span class="plus-icon">+</span>
+      </button>
+      <button class="btn btn-icon btn-delete-column" (click)="onDeleteColumn()" title="Delete Column">
+        <span class="delete-icon">🗑️</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="task-list">
+    <div 
+      class="task-container"
+      cdkDropList 
+      [cdkDropListData]="column.tasks" 
+      (cdkDropListDropped)="onDrop($event)"
+      [cdkDropListConnectedTo]="connectedDropLists" 
+      [id]="column.id">
+
+      <!-- Each task card now has cdkDrag directive for dragging -->
+      <div *ngFor="let task of column.tasks" cdkDrag [cdkDragData]="task">
+        <app-task-card 
+          [task]="task"
+          (editTask)="onEditTask($event)"
+          (deleteTask)="onDeleteTask($event)"
+          (updateTask)="onUpdateTask($event)">
+        </app-task-card>
+        
+        <!-- Custom drag preview placeholder -->
+        <div class="task-placeholder" *cdkDragPlaceholder></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Task Button at Bottom -->
+  <div class="add-task-button" (click)="onAddTask()">
+    <span class="plus-icon">+</span> Add Task
+  </div>
+</div>

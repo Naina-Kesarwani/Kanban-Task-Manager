@@ -1,0 +1,32 @@
+/* src/app/app.component.css - Component styles */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  background: transparent;
+  position: relative;
+  isolation: isolate;
+}
+
+.kanban-container {
+  background: transparent !important;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+@media (max-width: 768px) {
+  :host {
+    font-size: 14px;
+  }
+}
